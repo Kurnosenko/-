@@ -1,0 +1,31 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main()
+{
+    FILE *max , *output;
+    max = fopen("predel.txt", "r");
+    output = fopen("kolmax.txt","w");
+    int summ = 0, maximum = 0, number = 0, maxint = 0, prevnum=0;
+    int input[1000];
+    fscanf(max,"%d",&maxint);
+    for(int count=0;count<=1000;count++) 
+    {
+    // cout <<"f \n"<<maxint<<"\n"<<summ<<"\n";
+        cin >> number;
+        summ += number;
+        if (number > prevnum) 
+        {
+            maximum = number;
+        }
+        if (summ > maxint) 
+        {
+            fprintf(output,"\n\tcount:%0d\n\tmaximum:%0d", count+1, maximum);
+            return 1;
+        }
+        prevnum = number;
+    }
+    return 0;
+}
