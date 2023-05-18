@@ -1,0 +1,43 @@
+ #include <iostream>
+/**/ #include <fstream> /**#include <stdio.h>/**/
+
+using namespace std;
+
+int main()
+{
+     //FILE *num , *output;
+     /**/ ifstream num;     /**num = fopen("startgame.txt", "r");/**/
+     /**/ ofstream output; /**output = fopen("endgame.txt","w");/**/
+          int  gamenumber = 0, number[100];
+     /**/ num.open("startgame.txt"); /**/
+     /**/ num >> gamenumber;         /** fscanf(num,"%d",&gamenumber);/**/
+     /**/ num.close();               /**/
+     for (int count=0; ; count++) 
+     {
+         cin >> number[count];
+         if (number[count] > gamenumber) 
+         {
+             cout <<"введите число меньше\n";
+             
+         } else if (number[count] == gamenumber) 
+         {
+             cout << "вы победили!";
+             /**/ output.open("endgame.txt");     /**/
+             /**/ output << "введённые чила:\n";  /**fprintf(output, "введённые чила:\n");/**/
+             
+             for (int i = 0; i<=count; i++)
+             {
+                 /**/ output << number[i] <<"\n"; /** fprintf(output, "\t%0d\n", number[i]);/**/
+             }
+             /**/ output << "их количество: "<< count+1; /**fprintf(output, "\t\rих количество:%0d", count+1);/**/
+             /**/ output.close();                        /**/
+             return 0;
+             
+         } else if (number[count] < gamenumber)
+         {
+             cout << "введите число больше\n"; 
+             
+         } else return 1;
+     }
+     return 2;
+}
